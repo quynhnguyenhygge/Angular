@@ -1,0 +1,34 @@
+<!-- src/app/bitcoin.component.html -->
+<div class="bitcoin-container" *ngIf="data">
+    <h2 class="text-center">Bitcoin Information</h2>
+    <p class="info">Updated: {{ data.time.updated }}</p>
+    <p class="info">Disclaimer: {{ data.disclaimer }}</p>
+  
+    <h3 class="text-center mt-4">Bitcoin Prices</h3>
+  
+    <table class="table table-bordered table-striped mt-3">
+      <thead>
+        <tr>
+          <th>Currency Code</th>
+          <th>Symbol</th>
+          <th>Rate</th>
+          <th>Description</th>
+          <th>Rate Float</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let currency of ['USD', 'GBP', 'EUR']">
+          <td>{{ data.bpi[currency].code }}</td>
+          <td>{{ data.bpi[currency].symbol }}</td>
+          <td>{{ data.bpi[currency].rate }}</td>
+          <td>{{ data.bpi[currency].description }}</td>
+          <td>{{ data.bpi[currency].rate_float }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="error-message" *ngIf="errMessage">
+    <p class="text-danger">Error: {{ errMessage }}</p>
+  </div>
+  
